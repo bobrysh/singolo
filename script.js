@@ -97,3 +97,40 @@ function changeScreenMode(phoneSelected) {
   screenSelectedElement.classList.remove(`${currentMode}`);
   screenSelectedElement.classList.add(`${newMode}`);
 }
+
+
+//Portfolio
+const portfolioButtonsElements = document.querySelector(".portfolioSection__selector");
+const galleryElement = document.querySelector(".portfolioSection__images");
+const picturesElements = document.querySelectorAll(".portfolioSection__example");
+
+portfolioButtonsElements.addEventListener("click", event => {
+  if (event.target.classList.contains("selector__item")) {
+    reorderPictures();
+  }
+  setActive("selector__item", "button_bordered", event);
+  picturesElements.forEach(picture => {
+    picture.classList.remove("portfolioSection__example_active");
+  });
+});
+
+function reorderPictures() {
+  const firstPicture = galleryElement.children[0];
+  const firstPictureCopy = firstPicture.cloneNode();
+  firstPicture.remove();
+  galleryElement.append(firstPictureCopy);
+}
+
+galleryElement.addEventListener("click", event => {
+  setActive(`portfolioSection__example`, `portfolioSection__example_active`, event);
+});
+
+function setActive(elementsClass, activeClass, event) {
+  if (event.target.classList.contains(`${elementsClass}`)) {
+    const elements = document.querySelectorAll(`.${elementsClass}`);
+    elements.forEach(element => {
+      element.classList.remove(`${activeClass}`);
+    });
+    event.target.closest(`.${elementsClass}`).classList.add(`${activeClass}`);
+  }
+}

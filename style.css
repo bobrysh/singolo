@@ -615,19 +615,31 @@ html {
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: -1px;
+    cursor: pointer;
   }
   
   .portfolioSection__example {
-    padding-top: 17px;
-    padding-bottom: 3px;
+    /* padding-top: 17px;
+    padding-bottom: 3px; */
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 220px;
     height: 187px;
   }
+
   .portfolioSection__selector {
     padding-left: 1px;
     display: inline-block;
   }
+
+  .button_bordered {
+    color: #dedede;
+    border-color: #c5c5c5;
+  }
   
+  .portfolioSection__example_active {
+    outline: 5px solid #f06c64;
+  }
   
   /* ABOUT SECTION */
   /* ICONS */
