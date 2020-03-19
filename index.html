@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="header">
+  <header id="home" class="header">
     <div class="wrapperTop header__wrapper">
     <h1 class="logotype">singolo</h1>
     <nav>
       <ul class="navigation">
-        <li class="navigation__item"><a href="#">home</a></li>
-        <li class="navigation__item"><a href="#">services</a></li>
-        <li class="navigation__item"><a href="#">portfolio</a></li>
-        <li class="navigation__item"><a href="#">about</a></li>
-        <li class="navigation__item"><a href="#">contact</a></li>
+        <li class="navigation__item navigation__item_active"><a class="navigation__item" href="#home"">home</a></li>
+        <li class="navigation__item"><a class="navigation__item" href="#services">services</a></li>
+        <li class="navigation__item"><a class="navigation__item" href="#portfolio">portfolio</a></li>
+        <li class="navigation__item"><a class="navigation__item" href="#about">about</a></li>
+        <li class="navigation__item"><a class="navigation__item" href="#contact">contact</a></li>
       </ul>
     </nav>
   </div>
   </header>
 
   <main class="main">
-    <div class="slider">
+    <div id="slider" class="slider">
       <div class="wrapperTop slider__wrapper">
         <button class="arrow-left"></button>
         <img
@@ -44,7 +44,7 @@
         <button class="arrow-right"></button>
       </div>
     </div>
-    <div class="services">
+    <div id="services" class="services">
       <div class="wrapperTop services__wrap">
         <h2 class="services__title">Our Services</h2>
         <p class="services__text">
@@ -150,7 +150,7 @@
         </div>
       </div>
     </div>
-    <div class="portfolioSection">
+    <div id="portfolio" class="portfolioSection">
       <div class="portfolioSection__content">
         <div class="portfolioSection__title title">Portfolio</div>
         <div class="portfolioSection__subtitle subtitle">Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
@@ -178,7 +178,7 @@
         </div>
       </div>
     </div>
-    <div class="aboutSection">
+    <div id="about" class="aboutSection">
       <div class="aboutSection__content">
         <div class="aboutSection__title title">About Us</div>
         <div class="aboutSection__subtitle subtitle">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.
@@ -226,7 +226,7 @@
         </div>
       </div>
     </div>
-    <div class="section quoteSection">
+    <div id="contact" class="section quoteSection">
       <div class="wrapper">
         <div class="quoteSection__content quoteSection__textcolor">
           <h2 class="quoteSection__title">Get a Quote</h2>
