@@ -134,3 +134,55 @@ function setActive(elementsClass, activeClass, event) {
     event.target.closest(`.${elementsClass}`).classList.add(`${activeClass}`);
   }
 }
+
+
+//submit
+const formElement = document.querySelector("#form");
+const submitFormButton = document.querySelector("#contact-form-submit");
+const modalWrapperElement = document.querySelector(".modal-wrapper");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const subjectInput = document.querySelector("#subject");
+const textareaInput = document.querySelector("#textarea");
+const modalSubjectElement = document.querySelector("#modal-subject");
+const modalDescriptionElement = document.querySelector("#modal-description");
+const modalCloseButton = document.querySelector("#modal-close-button");
+
+submitFormButton.addEventListener("click", event => {
+  event.preventDefault();
+
+  if (!nameInput.value) {
+    nameInput.classList.add("invalid");
+  }
+
+  if (!emailInput.value) {
+    emailInput.classList.add("invalid");
+  }
+
+  if (nameInput.value && emailInput.value) {
+    modalWrapperElement.classList.remove("visually-hidden");
+    modalSubjectElement.innerText = subjectInput.value
+      ? `Тема: ${subjectInput.value}`
+      : "Без темы";
+    modalDescriptionElement.innerText = textareaInput.value
+      ? `Описание: ${textareaInput.value}`
+      : "Без описания";
+    document.body.classList.add("locked");
+    document.body.style.paddingRight = `${scrollWidth}px`;
+  }
+});
+
+modalCloseButton.addEventListener("click", () => {
+  modalWrapperElement.classList.add("visually-hidden");
+  document.body.classList.remove("locked");
+  formElement.reset();
+  document.body.style.paddingRight = "";
+});
+
+nameInput.addEventListener("focus", function() {
+  this.classList.remove("invalid");
+});
+
+emailInput.addEventListener("focus", function() {
+  this.classList.remove("invalid");
+});

@@ -234,13 +234,13 @@
           <p class="quoteSection__subtitle">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor</p>
           <p class="quoteSection__subtitle2">ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
         </div>
-        <div class="quoteSection__content-two flex-fix">
-          <form class="quoteSection__form" action="#" method="POST">
-            <input class="quoteSection__input-text" type="text" name="name" placeholder="Name (Required)" required>
-            <input class="quoteSection__input-text" type="email" name="email" placeholder="Email (Required)" required>
-            <input class="quoteSection__input-text" type="text" name="subject" placeholder="Subject">
-            <textarea class="quoteSection__input-text quoteSection__input-text__details" name="details" cols="30" rows="10" placeholder="Describe your project in detail..."></textarea>
-            <button class="quoteSection__form__submit" type="submit">Send</button>
+        <div class="quoteSection__content-two flex-fix ">
+          <form id="form" class="quoteSection__form" action="#" method="POST">
+            <input id="name" class="quoteSection__input-text" type="text" name="name" placeholder="Name (Required)" required>
+            <input id="email" class="quoteSection__input-text" type="email" name="email" placeholder="Email (Required)" required>
+            <input id="subject" class="quoteSection__input-text" type="text" name="subject" placeholder="Subject">
+            <textarea id="textarea" class="quoteSection__input-text quoteSection__input-text__details" name="details" cols="30" rows="10" placeholder="Describe your project in detail..."></textarea>
+            <button id="contact-form-submit" class="quoteSection__form__submit" type="submit">Send</button>
           </form>
           <div class="quoteSection__contact-information">
             <h3 class="quoteSection__contact-information__title">Contact Information</h3>
@@ -265,6 +265,17 @@
       </ul>
     </div>
   </footer>
+  <div class="modal-wrapper visually-hidden">
+    <div id="modal-window" class="modal-window">
+      <p class="modal-result-message">Письмо отправлено.</p>
+      <p class="modal-message" id="modal-subject"></p>
+      <p class="modal-message" id="modal-description"></p>
+      <button id="modal-close-button" class="c-button modal-button">
+        OK
+      </button>
+    </div>
+  </div>
+</div>
   <script src="./script.js"></script>
 </body>
 </html>
