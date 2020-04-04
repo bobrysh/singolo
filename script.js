@@ -1,18 +1,21 @@
 const NAVIGATION = document.getElementById('navigation');
-const PORTFOLIO_FILTER = document.getElementById('portfolio_buttons');
 const BUTTON_SUBMIT = document.getElementById('submit-button');
-const BUTTON_OK = document.getElementById('popup-close-btn');
 const PORTFOLIO_PICT = document.getElementById('portfolio-pictures');
-const PHONE_HORIZONTAL_SCREEN = document.getElementById('iphone-horizontal');
-const PHONE_VERTICAL_SCREEN = document.getElementById('iphone-vertical');
+const PORTFOLIO_FILTER = document.getElementById('portfolio_buttons');
+const PHONE_hori_SCREEN = document.getElementById('iphone-hori');
+const BUTTON_OK = document.getElementById('popup-close-btn');
+const PHONE_verti_SCREEN = document.getElementById('iphone-verti');
 const SHORT_MENU = document.getElementById('menu-icon');
+var firstSliderItem = true;
+var sliderAnimationEnd = true;
+var firstOffset;
+var secondOffset;
+var pictures = document.querySelectorAll('.portfolio__image-item');
+var newArr = shuffle(Array.from(pictures));
 
 // SLIDER
 document.querySelector('.slider__arrow_left').addEventListener('click', () => slider());
 document.querySelector('.slider__arrow_right').addEventListener('click', () => slider(false));
-
-let firstSliderItem = true,
-sliderAnimationEnd = true;
 
 function slider(leftArrow = true) {
     if (sliderAnimationEnd) {
@@ -23,29 +26,30 @@ function slider(leftArrow = true) {
         const nextSlide = document.getElementsByClassName(nextPicture)[0];
         const currentSlide = document.getElementsByClassName(currentPicture)[0];
         const background = document.getElementsByClassName('slider__wrapper')[0];
-        let firstOffset, secondOffset;
+        
 
-        if (leftArrow) {
-            firstOffset = 'slider_left-offset';
-            secondOffset = 'slider_right-offset';
-        } else {
+        switch (leftArrow) {
+          case true:
             firstOffset = 'slider_right-offset';
             secondOffset = 'slider_left-offset';
+            break;
+        
+          default: false
+          secondOffset = 'slider_right-offset';
+          firstOffset = 'slider_left-offset';
+            break;
         }
 
         nextSlide.classList.add(secondOffset);
-        nextSlide.addEventListener("transitionend",
-            () => {
+        nextSlide.addEventListener("transitionend",() => {
                 nextSlide.classList.remove('hidden_opacity');
-                nextSlide.classList.remove(secondOffset);
-            }, {once: true});
+                nextSlide.classList.remove(secondOffset);}, {once: true});
         currentSlide.classList.add(firstOffset);
 
         background.classList.toggle('second-slide');
         firstSliderItem = !firstSliderItem;
 
-        currentSlide.addEventListener("transitionend",
-            () => {
+        currentSlide.addEventListener("transitionend",() => {
                 currentSlide.classList.add('hidden_opacity');
                 nextSlide.style.zIndex = '100';
                 currentSlide.style.zIndex = '1';
@@ -56,14 +60,14 @@ function slider(leftArrow = true) {
 }
 
 //IPHONE BREAK
-PHONE_HORIZONTAL_SCREEN.addEventListener('click', (event) => {
-  if (event.target.id === 'iphone-horizontal-shadow') return;
-  document.getElementById('iphone-horizontal-screen').classList.toggle('screen_off');
+PHONE_hori_SCREEN.addEventListener('click', (event) => {
+  if (event.target.id === 'iphone-hori-shadow') return;
+  document.getElementById('iphone-hori-screen').classList.toggle('screen_off');
 });
 
-PHONE_VERTICAL_SCREEN.addEventListener('click', (event) => {
-  if (event.target.id === 'iphone-vertical-shadow') return;
-  document.getElementById('iphone-vertical-screen').classList.toggle('screen_off');
+PHONE_verti_SCREEN.addEventListener('click', (event) => {
+  if (event.target.id === 'iphone-verti-shadow') return;
+  document.getElementById('iphone-verti-screen').classList.toggle('screen_off');
 });
 
   //PORTFOLIO SHUFFLE
@@ -76,27 +80,23 @@ PHONE_VERTICAL_SCREEN.addEventListener('click', (event) => {
   });
 
   PORTFOLIO_PICT.addEventListener('click', (event) => {
-      if (event.target.tagName !== 'IMG') return;
-      PORTFOLIO_PICT.querySelectorAll('li')
-          .forEach(el => el.classList.remove('portfolio__image-item_active'));
+      PORTFOLIO_PICT.querySelectorAll('li').forEach(element => element.classList.remove('portfolio__image-item_active'));
       event.target.parentNode.classList.add('portfolio__image-item_active');
   });
 
   function printPortfolio() {
-      let pictures = document.querySelectorAll('.portfolio__image-item');
-      let newArr = shuffle(Array.from(pictures));
-      document.getElementById('portfolio-pictures').innerHTML = newArr.reduce((acc, event) =>
-          typeof acc === 'string' ? acc + event.outerHTML : acc.outerHTML + event.outerHTML);
+
+      document.getElementById('portfolio-pictures').innerHTML = newArr.reduce((acc, event) => typeof acc === 'string' ? acc + event.outerHTML : acc.outerHTML + event.outerHTML);
   }
 
   function shuffle(arr) {
-      let j, temp;
-      for (let i = arr.length - 1; i > 0; i--) {
-          j = Math.floor(Math.random() * (i + 1));
-          temp = arr[j];
-          arr[j] = arr[i];
-          arr[i] = temp;
-      }
+      var consta, keys;
+      arr.forEach(element => {
+        consta = Math.floor(Math.random() * (element + 1));
+        keys = arr[element];
+        arr[element] = keys; 
+        arr[element] = arr[element];
+      });
       return arr;
   }
 
@@ -107,7 +107,8 @@ SHORT_MENU.addEventListener('click', (event) => {
 
 function openShortMenu (event) {
   document.querySelector('.header-wrapper').classList.toggle('header__wrapper-close');
-  event.target.classList.toggle('menu-icon_active');
+  event.target.classList.add('menu-icon_active');
+  event.target.classList.remove('menu-icon_active');
 }
 
 function closeShortMenu (event) {
@@ -120,14 +121,24 @@ function slideToAnchor(event) {
   const articles = document.querySelectorAll('main>article');
 
   articles.forEach((element) => {
-      if (currentPos + 95 >= element.offsetTop && currentPos + 95 < (element.offsetTop + element.offsetHeight)) {
+      switch (currentPos + 95 >= element.offsetTop && currentPos + 95 < (element.offsetTop + element.offsetHeight)) {
+        case true:
           NAVIGATION.querySelectorAll('a').forEach((el) => {
-              el.classList.remove('navigation__item_active');
-              closeShortMenu(event);
-              if (element.getAttribute('class') === el.getAttribute('href').substring(1)) {
-                  el.classList.add('navigation__item_active');
-              }
-          })
+            el.classList.remove('navigation__item_active');
+            closeShortMenu(event);
+            switch (element.getAttribute('class') === el.getAttribute('href').substring(1)) {
+              case true:
+                el.classList.add('navigation__item_active');
+                break;
+            
+              default:
+                break;
+            }
+        })
+          break;
+      
+        default:
+          break;
       }
   });
 }
@@ -135,29 +146,40 @@ window.addEventListener('scroll', slideToAnchor);
 
 //SUBMIT FORM
 BUTTON_SUBMIT.addEventListener('click', (event) => {
-
   if (document.querySelector('.form-quote').checkValidity()) {
       event.preventDefault();
-      let messageText = getSubjectInput();
-      messageText += getDescriptionInput();
-      document.getElementById('result').innerText = messageText;
       document.getElementById('quote-popup-block').classList.remove('hidden');
+      document.getElementById('result').innerText = messageText;
+      var messageText = getSubjectInput();
+      messageText += getDescriptionInput();
       document.querySelector('.form-quote').reset();
   }
 });
 
 function getSubjectInput() {
   const subject = document.getElementById('subject').value;
-  return subject ? `\nТема: ${subject}` : '\nБез темы';
+  switch (subject) {
+    case true:
+      `Описание: ${sliced}`
+      return;
+  
+    default:
+      'Без описания'
+      return;
+  }
 }
 
 function getDescriptionInput() {
   const description = document.getElementById('description').value;
-  let sliced = description.slice(0, 300);
-  if (sliced.length < description.length) {
-      sliced += '...';
+  switch (description) {
+    case true:
+      `Описание: ${sliced}`
+      return;
+  
+    default:
+      'Без описания'
+      return;
   }
-  return description ? `\nОписание: ${sliced}` : '\nБез описания';
 }
 
 

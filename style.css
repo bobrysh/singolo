@@ -207,20 +207,20 @@ main {
   position: absolute;
 }
 
-#iphone-vertical-shadow {
+#iphone-verti-shadow {
   position: absolute;
   top: 53px;
   left: 112px;
 }
 
-#iphone-vertical-body {
+#iphone-verti-body {
   position: absolute;
   top: 175px;
   left: -9px;
   transform: rotate(-90deg);
 }
 
-#iphone-vertical-screen {
+#iphone-verti-screen {
   position: absolute;
   top: 115px;
   left: 123px;
@@ -228,41 +228,41 @@ main {
 }
 
 
-#iphone2-vertical-body {
+#iphone2-verti-body {
   position: absolute;
   top: 43px;
   left: 383px;
   height: 513px;
 }
 
-#iphone2-vertical-mini1 {
+#iphone2-verti-mini1 {
   position: absolute;
   top: 152px;
   left: 252px;
   opacity: 0.5;
 }
 
-#iphone2-vertical-mini2 {
+#iphone2-verti-mini2 {
   position: absolute;
   top: 152px;
   left: 612.16px;
   opacity: 0.5;
 }
 
-#iphone-horizontal-shadow {
+#iphone-hori-shadow {
   position: absolute;
   top: 53px;
   left: 547px;
   transform: rotateY(180deg) rotateZ(-90deg);
 }
 
-#iphone-horizontal-body {
+#iphone-hori-body {
   position: absolute;
   top: 174px;
   left: 425px;
 }
 
-#iphone-horizontal-screen {
+#iphone-hori-screen {
   position: absolute;
   top: 185px;
   left: 482px;
@@ -846,59 +846,59 @@ main {
       height: 100%;
   }
 
-  #iphone-vertical-shadow {
+  #iphone-verti-shadow {
     height: 47.3vw;
     top: 5vw;
     left: 11vw;
   }
 
-  #iphone-vertical-body {
+  #iphone-verti-body {
     height: 21vw;
     top: 17vw;
     left: -1vw;
     transform: rotate(-90deg);
   }
 
-  #iphone-vertical-screen {
+  #iphone-verti-screen {
     height: 33vw;
     top: 11.24vw;
     left: 12vw;
   }
 
 
-  #iphone2-vertical-body {
+  #iphone2-verti-body {
     height: 50vw;
     top: 5vw;
     left: calc(50% - (25vw / 2));
   }
 
-  #iphone2-vertical-mini1 {
+  #iphone2-verti-mini1 {
     height: 31vw;
     left: 25%;
     top: calc(29vw - 27vw / 2);
     opacity: 0.5;
   }
 
-  #iphone2-vertical-mini2 {
+  #iphone2-verti-mini2 {
     height: 31vw;
     left: 59%;
     top: calc(29vw - 27vw / 2);
     opacity: 0.5;
   }
 
-  #iphone-horizontal-shadow {
+  #iphone-hori-shadow {
     height: 47.3vw;
     top: 5.4vw;
     left: 53.5vw;
   }
 
-  #iphone-horizontal-body {
+  #iphone-hori-body {
     height: 21vw;
     top: 17.3vw;
     left: 41.7vw;
   }
 
-  #iphone-horizontal-screen {
+  #iphone-hori-screen {
     height: 18.9vw;
     top: 18.4vw;
     left: 47.3vw;
