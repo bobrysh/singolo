@@ -1,15 +1,14 @@
 const NAVIGATION = document.getElementById('navigation');
-const BUTTON_SUBMIT = document.getElementById('submit-button');
-const PORTFOLIO_PICT = document.getElementById('portfolio-pictures');
 const PORTFOLIO_FILTER = document.getElementById('portfolio_buttons');
-const PHONE_hori_SCREEN = document.getElementById('iphone-hori');
+const BUTTON_SUBMIT = document.getElementById('submit-button');
 const BUTTON_OK = document.getElementById('popup-close-btn');
+const PORTFOLIO_PICT = document.getElementById('portfolio-pictures');
+const PHONE_hori_SCREEN = document.getElementById('iphone-hori');
 const PHONE_verti_SCREEN = document.getElementById('iphone-verti');
 const SHORT_MENU = document.getElementById('menu-icon');
 var firstSliderItem = true;
 var sliderAnimationEnd = true;
-var firstOffset;
-var secondOffset;
+var firstOffset, secondOffset;
 var pictures = document.querySelectorAll('.portfolio__image-item');
 var newArr = shuffle(Array.from(pictures));
 
@@ -26,7 +25,6 @@ function slider(leftArrow = true) {
         const nextSlide = document.getElementsByClassName(nextPicture)[0];
         const currentSlide = document.getElementsByClassName(currentPicture)[0];
         const background = document.getElementsByClassName('slider__wrapper')[0];
-        
 
         switch (leftArrow) {
           case true:
@@ -42,20 +40,19 @@ function slider(leftArrow = true) {
 
         nextSlide.classList.add(secondOffset);
         nextSlide.addEventListener("transitionend",() => {
-                nextSlide.classList.remove('hidden_opacity');
-                nextSlide.classList.remove(secondOffset);}, {once: true});
+        nextSlide.classList.remove('hidden_opacity');
+        nextSlide.classList.remove(secondOffset);}, {once: true});
         currentSlide.classList.add(firstOffset);
 
         background.classList.toggle('second-slide');
         firstSliderItem = !firstSliderItem;
 
-        currentSlide.addEventListener("transitionend",() => {
-                currentSlide.classList.add('hidden_opacity');
-                nextSlide.style.zIndex = '100';
-                currentSlide.style.zIndex = '1';
-                currentSlide.classList.remove(firstOffset);
-                sliderAnimationEnd = !sliderAnimationEnd;
-            }, {once: true});
+        currentSlide.addEventListener("transitionend",() => {currentSlide.classList.add('hidden_opacity');
+        nextSlide.style.zIndex = '100';
+        currentSlide.style.zIndex = '1';
+        currentSlide.classList.remove(firstOffset);
+        sliderAnimationEnd = !sliderAnimationEnd;
+       }, {once: true});
     }
 }
 
@@ -171,6 +168,7 @@ function getSubjectInput() {
 
 function getDescriptionInput() {
   const description = document.getElementById('description').value;
+  var sliced = description.slice(0, 300);
   switch (description) {
     case true:
       `Описание: ${sliced}`
